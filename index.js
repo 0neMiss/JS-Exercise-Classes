@@ -41,9 +41,24 @@ class Airplane {
 */
 
 class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+    this.stomach = [];
+  }
+  eat(someFood) {
+    if (this.stomach.length < 10)
+      this.stomach.push(someFood);
+
+  }
+  poop() {
+      this.stomach = [];
+  }
+  toString() {
+    return this.name +','+ this.age;
+  }
 
 }
-
 /*
   TASK 2
     - Write a Car class whose constructor initializes `model` and `milesPerGallon` from arguments.
@@ -59,6 +74,27 @@ class Person {
 */
 
 class Car {
+constructor(model, milesPerGallon){
+  this.tank = 0;
+  this.odometer = 0;
+  this.milesPerGallon = milesPerGallon;
+  this.model = model;
+}
+fill(gallons){
+  return this.tank += gallons;
+
+}
+drive(distance){
+if(this.tank * this.milesPerGallon >distance){
+  this.odometer = distance;
+  this.tank -= distance/this.milesPerGallon;
+}
+else{
+  this.odometer= this.milesPerGallon * this.tank;
+  this.tank = 0;
+return `I ran out of fuel at ${this.odometer} miles`;
+}
+}
 
 }
 
@@ -146,11 +182,25 @@ class ProjectManager {
 ///////// END OF CHALLENGE /////////
 if (typeof exports !== 'undefined') {
   module.exports = module.exports || {}
-  if (Airplane) { module.exports.Airplane = Airplane }
-  if (Person) { module.exports.Person = Person }
-  if (Car) { module.exports.Car = Car }
-  if (Lambdasian) { module.exports.Lambdasian = Lambdasian }
-  if (Instructor) { module.exports.Instructor = Instructor }
-  if (Student) { module.exports.Student = Student }
-  if (ProjectManager) { module.exports.ProjectManager = ProjectManager }
+  if (Airplane) {
+    module.exports.Airplane = Airplane
+  }
+  if (Person) {
+    module.exports.Person = Person
+  }
+  if (Car) {
+    module.exports.Car = Car
+  }
+  if (Lambdasian) {
+    module.exports.Lambdasian = Lambdasian
+  }
+  if (Instructor) {
+    module.exports.Instructor = Instructor
+  }
+  if (Student) {
+    module.exports.Student = Student
+  }
+  if (ProjectManager) {
+    module.exports.ProjectManager = ProjectManager
+  }
 }
